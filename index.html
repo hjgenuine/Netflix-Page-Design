@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+    body{
+        margin: 0px;
+        padding: 0px;
+        font-family: "poppins";
+    }
+
+    ul{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        border: 5px solid rgb(73, 73, 73);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(45deg, #9b0101, rgb(219, 1, 1));
+    }
+
+/* Navigation-Menu */
+    nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 58px;
+        width:100%;
+        background-color: black;
+        color: white;
+        position: relative;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        border-bottom: 5px solid #2b2b2b;
+        box-sizing: border-box;
+    }
+    .logo h1{
+        font-size: 2rem;
+        color: rgb(209, 2, 2);
+    }
+    nav .menu{
+        display: flex;
+    }
+    nav .menu li a{
+        line-height: 40px;
+        height: 40px;
+        margin: 0px;
+        padding: 0px 1vw;
+        display: flex;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        font-weight: 500;
+        color:white;
+        letter-spacing: 1px;
+    }
+    .search{
+        width:250px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        padding: 0px 20px;
+    }
+    .search input{
+        width:100%;
+        height: 30px;
+        border:none;
+        outline: none;
+        color: black;
+        font-family: poppins;
+    }
+    .search i{
+        color:black;
+    }
+    nav .menu li a:hover{
+        background-color: #242424;
+        color:#ffffff;
+        box-shadow: 5px 10px 30px rgba(53,53,53,0.1);
+        transition: all ease 0.2s;
+    }
+
+/* Showcase-Menu */
+    #main{
+        border-top: 5px solid #2b2b2b;
+        padding-top: 30px;
+        background-color: #ffffff;
+        background-color: black;
+        padding-bottom: 45px;
+    }
+    #cards-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .showcase-box{
+        width:400px;
+        height: 250px;
+        box-shadow: 5px 15px 30px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        margin:0px 20px 10px 20px;
+        overflow: hidden;
+        transition: transform 0.2s linear;
+        transform: scale(0.99);
+        position: relative;
+    }
+    .showcase-box img{
+        width:100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+    .showcase-heading{
+        font-weight: 500;
+        padding: 1px 0px;
+        margin:0px 2%;
+        margin-bottom: 15px;
+        font-size: 1.7rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: white;
+    }
+    .showcase-box:hover{
+        transition: transform 0.2s linear;
+        z-index: 3;
+        box-shadow: 0px 0px 15px 0px white;
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+/* Joker Card */
+    #container{
+        background-image: url("images/bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 700px;
+        position: relative;
+    }
+    #content{
+        height: 98%;
+        color: white;
+        width: 40%;
+        margin-left: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #title{
+        color: grey;
+        font-size: 1.15rem;
+    }
+    #title > p{
+        display: flex;
+        align-items: center;
+    }
+    #rated{
+        color: white;
+        background-color: red;
+        border: 0px;
+        border-radius: 0.2rem;
+        font-size: 1.15rem;
+        outline: none;
+        font-family: poppins;
+    }
+    #details{
+        font-size: 1.11rem;
+        line-height: 25px;
+    }
+    .btn{
+        color: white;  
+        border: 0px;
+        border-radius: 0.2rem;
+        font-size: 1.15rem;
+        outline: none;
+        font-family: poppins;
+        padding: 5px 15px;
+        cursor: pointer;  
+    }
+    #btn1{
+        color: white;
+        background-color: red;
+    }
+    #btn2{
+        color: white;
+        margin-left: 1rem;
+        background-color: black;
+    }
+    #btn1:hover{
+        background-color: white;
+        color: red;
+    }
+    #btn2:hover{
+        background-color: white;
+        color: black;
+    }
+    #play{
+        display: flex;
+        margin-top: 15%;
+        align-items: center;
+        cursor: pointer;
+    }
+    #play > img{
+        margin-right: 0.5rem;
+    }
+    #play > p{
+        font-size: 1.25rem;
+    }
+    #video{
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        backdrop-filter: blur(5px);
+        visibility: hidden;
+    }
+    #video > video{
+        height: 70%;
+        outline: none;
+    }
+    #closeTrailer{
+        position: fixed;
+        top: 3vh;
+        right: 1vw;
+        cursor: pointer;
+    }
+
+/* Movies Container */
+    #movies{
+        border-top: 5px solid #2b2b2b;
+        background-color: black;
+        color: white;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .movies-heading h1{
+        font-weight: 500;
+        margin: 0px;
+        padding: 1px 20px;
+        font-size: 1.7rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        width: 100%;
+    }
+    .movies-heading{
+        display: flex;
+        margin:0px 2%;
+    }
+    .movies-box{
+        width:290px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgb(20, 20, 20);
+        border: 2px solid #2b2b2b;
+        margin: 20px;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all ease 0.2s;
+        transform: translateY(0px);
+    }
+    .movies-box .genres{
+        color: rgb(77, 77, 77);
+    }
+    .movies-img{
+        width:100%;
+        height: 300px;
+        position: relative;
+    }
+    .movies-img img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .movies-box a{
+        text-align:center;
+        display: block;
+        font-weight: 600;
+        display: -webkit-box;
+        max-width: 80%;
+        -webkit-line-clamp: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #ffffff;
+        margin: 20px;
+    }
+    .movies-box:hover{
+        transform: translateY(-10px);
+        transition: all ease 0.2s;
+    }
+    #movies-list{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .quality{
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #1f1f1f;
+        color: #ffffff;
+        padding: 5px 20px;
+        font-weight: 500;
+        border-radius: 0px 0px 10px 10px;
+        box-shadow: 5px 10px 30px rgba(0,0,0,0.4);
+    }
+
+/* Contact Form */
+    #contact {
+        padding-top: 25px;
+        background-color: black;
+        background-image: linear-gradient(to right, black, #1f1f1f);
+        color: white;
+        padding-bottom: 40px;
+        border-top: 5px solid #1f1f1f;
+    }
+    #contact h1 {
+        font-weight: 500;
+        margin: 0px;
+        font-size: 1.7rem;
+        text-transform: uppercase;
+        padding: 1px 45px;
+        margin-bottom: 20px;
+    }
+    #contact-form {
+        margin-left: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #contact-container {
+        display: flex;
+    }
+    #my-details-container {
+        width: 35%;
+        margin-left: 6%;
+    }
+    #my-details-container h3 {
+        color: red;
+        font-weight: 550;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+    }
+    #contact-form-container {
+        width: 50%;
+    }
+    #my-details-container p {
+        color: #d9dcdd;
+        font-size: 0.9rem;
+    }
+    .my-details-info-container {
+        margin-bottom: 20px;
+        color: #d9dcdd;
+        font-size: 1rem;
+    }
+    .my-details-info-container span {
+        margin-left: 0.4rem;
+    }
+    .my-details-info-container i {
+        color: white;
+    }
+    .my-details-icon {
+        width: 1rem;
+        height: 1rem;
+        vertical-align: bottom;
+        margin-right: 0.5rem;
+    }
+    #contact-form input, textarea {
+        max-width: 90%;
+        margin: 15px;
+        padding: 4px 10px;
+        border: 0px solid transparent;
+        border-bottom: 2px solid white;
+        color: #d9dcdd;
+        background: transparent;
+        width: 90%;
+        line-height: 1.6;
+        font-size: 1rem;
+        font-family: poppins;
+    }
+    #contact-form button[type="submit"] {
+        background: transparent;
+        font-size: 0.95rem;
+        border: 2px solid white;
+        margin-top: 5%;
+        color: white;  
+        border: 0px;
+        border-radius: 0.2rem;
+        font-size: 1.1rem;
+        outline: none;
+        background-color: red;
+        font-family: poppins;
+        padding: 5px 15px;
+        cursor: pointer; 
+    }
+    #contact-form button:hover {
+        background: white;
+        color: red;
+        cursor: pointer;
+    }
+    input:focus, select:focus, textarea:focus, button:focus {
+        outline: none;
+    }
+
+/* Dropdown Menu */
+    #dropdown{
+        user-select: none;
+        display: none;
+    }
+    #dropdown-button{
+        font-size: 1.7rem;
+    }
+    #dropdown-button:hover{
+        cursor: pointer;
+    }
+    #toggle-dropdown{
+        display: none;
+    }
+    #toggle-dropdown:checked + #vertical-dropdown{
+        visibility: visible;
+        transition: height 0.2s linear;
+        height: 235px;
+    }
+    #vertical-dropdown{
+        transition: height 0.2s linear, visibility 0.2s linear;
+        height: 0px;
+        position: absolute;
+        box-sizing: border-box;
+        border: 3px solid #1f1f1f;
+        width: 99.9%;
+        left: 0;
+        top: 50px;
+        background-color: black;
+        text-align: center;
+        visibility: hidden;
+        overflow: hidden;
+    }
+    #vertical-dropdown p{
+        margin: 5px;
+        padding: 5px;
+        border-bottom: 3px solid #2b2b2b;
+    }
+    #vertical-dropdown a{
+        text-decoration: none;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+    #vertical-dropdown p:hover{
+        cursor: pointer;
+        background-color: #242424;
+        color:#ffffff;
+        box-shadow: 5px 10px 30px rgba(53,53,53,0.1);
+    }
+
+/* Responsiveness */
+    @media only screen and (max-width: 1050px) {
+        #container{
+            height: 700px;
+        }
+    }
+    @media only screen and (max-width: 910px) {
+        nav > .menu{
+            display: none;
+        }
+        #dropdown{
+            display: block;
+        }
+    }
+    @media only screen and (max-width: 750px) {
+        #content{
+            width: 70%;
+        }
+        #details{
+            font-size: 1.05rem;
+        }
+        .search{
+            width: 200px;
+        }
+        .showcase-box:hover{
+            transform: scale(1.05);
+        }
+        #video > video{
+            height: 40%;
+            outline: none;
+        }
+        .movies-box{
+            width:270px;
+        }
+        .movies-img{
+            height: 280px;
+        }
+        #contact-container{
+            flex-direction: column;
+            align-items: center;
+        }
+        #my-details-container{
+            width: 80%;
+        }
+        #contact-form{
+            margin-left: 0;
+        }
+        #contact-form-container {
+            width: 80%;
+            margin: 0px;
+        }
+    }
+    @media only screen and (max-width: 550px){
+        #content{
+            width: 90%;
+            margin-left: 1rem;
+        }
+        nav .logo h1{
+            font-size: 1.5rem;
+        }
+        .search{
+            width: 150px;
+        }
+        .movies-box{
+            margin: 8px;
+        }
+    }
+
+</style>
+<body>
+<!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <h1>NETFLIX</h1>
+        </a>
+        <div id="dropdown">
+            <label for="toggle-dropdown" id="dropdown-button"><i class="fas fa-bars"></i></label>
+            <input type="checkbox" name="" id="toggle-dropdown">
+            <div id="vertical-dropdown">
+                <p><a href="#">Home</a></p>
+                <p><a href="#">Movies</a></p>
+                <p><a href="#">TV Shows</a></p>
+                <p><a href="#">Hollywood</a></p>
+                <p><a href="#">Horror</a></li>
+            </div>
+        </div>
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">TV Shows</a></li>
+            <li><a href="#">Hollywood</a></li>
+            <li><a href="#">Horror</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Find Your Favourtie Movies"/>
+            <i class="fas fa-search"></i>
+        </div>
+    </nav>
+
+<!-- Joker Card -->
+    <div id="container">
+        <section id="content">
+            <div id="logo">
+                <img src="images/logo.png" alt="">
+            </div>
+            <div id="title">
+                <p>2020 | &nbsp;<button id="rated">12+</button>&nbsp; | 1h 52min | Drama</p>
+            </div>
+            <p id="details">Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him.</p>
+            <div id="buttons">
+                <button id="btn1" class="btn"><i class="fas fa-play" style="font-size: 0.9rem;"></i> PLAY</button>
+                <button id="btn2" class="btn"><i class="fas fa-plus" style="font-size: 1rem;"></i> MY LIST</button>
+            </div>
+            <div id="play" onclick="playTrailer()">
+                <img src="images/play.png" alt="">
+                <p style="cursor: pointer;">PLAY TRAILER</p>
+            </div>
+        </section>
+    </div>
+    <div id="video">
+        <video src="images/trailer.mp4" controls id="mainVideo"></video>
+        <img src="images/close.png" alt="" id="closeTrailer">
+    </div>
+
+<!-- Showcase -->
+    <section id="main">
+        <h1 class="showcase-heading">Showcase</h1>
+        <div id="cards-container" class="cs-hidden">
+            <div class="showcase-box">
+                <img src="images/s-1.jpg"/>
+            </div>
+            <div class="showcase-box">
+                <img src="images/s-2.png"/>
+            </div>
+            <div class="showcase-box">
+                <img src="images/s-3.jpg"/>
+            </div>
+        </div>
+    </section>
+
+<!-- Movies -->
+    <div id="movies">
+        <div class="movies-heading">
+            <h1>Movies</h1>
+        </div>
+        <section id="movies-list">
+            <div class="movies-box">
+                <div class="movies-img">
+                    <div class="quality">1080p</div>
+                    <img src="images/l-1.jpg">
+                </div>
+                <a href="#">
+                    Justice League (2021) <br> <span class="genres">Action Movie</span>
+                </a>
+            </div>
+            <div class="movies-box">
+                <div class="movies-img">
+                    <div class="quality">1080p</div>
+                    <img src="images/l-2.jpg">
+                </div>
+                <a href="#">
+                    Fast & Furious 9 (2021) <br> <span class="genres">Action Movie</span>
+                </a>
+            </div>
+            <div class="movies-box">
+                <div class="movies-img">
+                    <div class="quality">1080p</div>
+                    <img src="images/l-3.jpg">
+                </div>
+                <a href="#">
+                    Godzilla vs. Kong (2021) <br> <span class="genres">Action Movie</span>
+                </a>
+            </div>
+            <div class="movies-box">
+                <div class="movies-img">
+                    <div class="quality">1080p</div>
+                    <img src="images/l-4.jpg">
+                </div>
+                <a href="#">
+                    Tom & Jerry (2021) <br> <span class="genres">Comedy Movie</span>
+                </a>
+            </div>
+            <div class="movies-box">
+                <div class="movies-img">
+                    <div class="quality">1080p</div>
+                    <img src="images/l-5.jpg">
+                </div>
+                <a href="#">
+                    1917 (2019) <br> <span class="genres">War Movie</span>
+                </a>
+            </div>
+            <div class="movies-box">
+                <div class="movies-img">
+                    <div class="quality">1080p</div>
+                    <img src="images/l-6.jpg">
+                </div>
+                <a href="#">
+                    Joker (2020) <br> <span class="genres">Crime Movie</span>
+                </a>
+            </div>
+            <div class="movies-box">
+                <div class="movies-img">
+                    <div class="quality">1080p</div>
+                    <img src="images/l-7.jpg">
+                </div>
+                <a href="#">
+                    Conjuring 3 (2021) <br> <span class="genres">Horror Movie</span>
+                </a>
+            </div>
+            <div class="movies-box">
+                <div class="movies-img">
+                    <div class="quality">1080p</div>
+                    <img src="images/l-8.jpg">
+                </div>
+                <a href="#">
+                    Venom (2018) <br> <span class="genres">Sci-Fi Movie</span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+<!-- Contact Section -->
+    <section id="contact">
+        <h1 class="section-heading">
+            <span> Contact </span>
+        </h1>
+        <div id="contact-container">
+            <div id="contact-form-container">
+                <form id="contact-form">
+                    <input id="input-name" name="name" type="text" placeholder="Your Name">
+                    <input id="input-email" name="input-email" type="text" required placeholder="Your Email">
+                    <textarea id="input-message" name="input-message" rows="2" cols=40 placeholder="Message"></textarea>
+                    <button class="sub-btn" type="submit">SEND MESSAGE</button>
+                </form>
+            </div>
+            <div id="my-details-container">
+                <h3> Get In touch </h3>
+                <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                <h3> My Address </h3>
+                <div class="my-details-info-container">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Delhi, India</span>
+                </div>
+                <div class="my-details-info-container">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>9999999999</span>
+                </div>
+                <div class="my-details-info-container">
+                    <i class="far fa-envelope"></i>
+                    <span>myemail@gmail.com</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+    const trailerContainer = document.getElementById("video");
+    const closeBtn = document.getElementById("closeTrailer");
+    const video = document.getElementById("mainVideo");
+    function playTrailer(){
+        trailerContainer.style.visibility = "visible";
+        video.play();
+        closeBtn.addEventListener("click", closeTrailer);
+    }
+    function closeTrailer(){
+        trailerContainer.style.visibility = "hidden";
+        video.currentTime = 0;
+        video.pause();
+        closeBtn.removeEventListener("click", closeTrailer);
+    }
+</script>
+</body>
+</html>
